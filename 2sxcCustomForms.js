@@ -43,7 +43,7 @@ function init2sxcCustomForm() {
       }
 
       switch(element.dataset.type) {
-      case 'string':
+      case 'text':
         // <div class="element.dataset.wrapperclass">
         //   <label for="element.dataset.name" class="element.dataset.labelclass">element.dataset.labeltext</label>
         //   <input type="element.dataset.inputtype" class="element.dataset.inputclass" id="element.dataset.name" element.dataset.disabled>
