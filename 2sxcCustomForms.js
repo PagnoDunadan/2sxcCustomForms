@@ -1,44 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Test</title>
-</head>
+document.addEventListener('DOMContentLoaded', init2sxcCustomForm, false);
 
-<body>
-  <!--
-    Required properties:
-    data-webservice="Form/ProcessForm"
-
-    Optional properties:
-    none
-  -->
-  <custom-form data-webservice="Form/ProcessForm">
-
-    <!--
-      Required properties:
-      data-type="string"
-      data-name="FirstName"
-
-      Optional properties:
-      data-wrapperclass="form-group"
-      data-labelclass="some-class"
-      data-labeltext="FirstName"
-      data-inputtype="text"
-      data-inputclass="form-control"
-      data-disabled="disabled"
-    -->
-    <custom-form-element data-type="string" data-name="FirstName" data-disabled="disabled"></custom-form-element>
-
-  </custom-form>
-</body>
-
-</html>
-
-<script>
-document.addEventListener('DOMContentLoaded', initCustomForm, false);
-
-function initCustomForm() {
+function init2sxcCustomForm() {
   var customForms = document.getElementsByTagName('custom-form');
   if (!customForms) return 0;
 
@@ -80,11 +42,6 @@ function initCustomForm() {
         return;
       }
 
-      var wrapperclass = element.dataset.wrapperclass ? element.dataset.wrapperclass : 'form-group';
-      var labelclass = element.dataset.labelclass ? element.dataset.labelclass : '';
-      var inputtype = element.dataset.inputtype ? element.dataset.inputtype : 'text';
-      var inputclass = element.dataset.inputclass ? element.dataset.inputclass : 'form-control';
-
       switch(element.dataset.type) {
       case 'string':
         // <div class="element.dataset.wrapperclass">
@@ -94,27 +51,27 @@ function initCustomForm() {
 
         var wrapperDiv = document.createElement('div');
         var label = document.createElement('label');
+        var labelText = element.dataset.labeltext ? element.dataset.labeltext : element.dataset.name;
         var input = document.createElement('input');
-        //element.innerHTML = '';
+        element.innerHTML = '';
 
         wrapperDiv.className = element.dataset.wrapperclass ? element.dataset.wrapperclass : 'form-group';
         label.htmlFor = element.dataset.name;
         label.className = element.dataset.labelclass ? element.dataset.labelclass : '';
-        label.innerText = element.dataset.labeltext ? element.dataset.labeltext : element.dataset.name;
         input.type = element.dataset.inputtype ? element.dataset.inputtype : 'text';
         input.className = element.dataset.inputclass ? element.dataset.inputclass : 'form-control';
         input.id = element.dataset.name;
-        input.disabled = (element.dataset.disabled == 'disabled') ? true : null;
+        input.disabled = (element.dataset.disabled == 'disabled') ? true : false;
 
         element.appendChild(wrapperDiv);
         wrapperDiv.appendChild(label);
+        label.appendChild(document.createTextNode(labelText));
         wrapperDiv.appendChild(input);
         break;
       default:
-        element.innerHTML = 'Unsupported custom-form-element type.'
+        element.innerHTML = 'Unsupported custom-form-element type.';
       }
     });
   }
 
 }
-</script>

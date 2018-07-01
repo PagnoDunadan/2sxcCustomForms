@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test</title>
+</head>
+
+<body>
+  <!--
+    Required properties:
+    data-webservice="Form/ProcessForm"
+
+    Optional properties:
+    none
+  -->
+  <custom-form data-webservice="Form/ProcessForm">
+
+    <!--
+      Required properties:
+      data-type="string"
+      data-name="FirstName"
+
+      Optional properties:
+      data-wrapperclass="form-group"
+      data-labelclass="some-class"
+      data-labeltext="FirstName"
+      data-inputtype="text"
+      data-inputclass="form-control"
+      data-disabled="disabled"
+    -->
+    <custom-form-element data-type="string" data-name="FirstName" data-disabled="disabled"></custom-form-element>
+
+  </custom-form>
+
+  <script src="2sxcCustomForms.js"></script>
+</body>
+
+</html>
